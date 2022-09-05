@@ -4,11 +4,11 @@
     @include flex(center, flex-start);
     background-color: $mainBg;
     border-radius: $borderRadius;
-    height: 50px;
+    height: 30px;
     width: max-content;
 
     &__img {
-        --size: 50px;
+        --size: 40px;
         width: var(--size);
         height: var(--size);
         border-radius: $borderRadius;
