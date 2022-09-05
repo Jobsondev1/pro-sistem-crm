@@ -1,6 +1,6 @@
 import React from 'react'
-import Box from '../components/box/Box'
 import DashboardWrapper ,{ DashboardWrapperMain, DashboardWrapperRight}from '../components/dashboard-wrapper/DashboardWrapper'
+import SummaryBox from '../components/summary-box/SummaryBox'
 import { data } from '../constants'
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
                   {
                     data.summary.map((item, index)=>(
                       <div key={`summary-${index}`} className ='col-6 col-md-6 col-sm-12 mb'>
-                            <Box/>
+                            <SummaryBox item={item}/>
                       </div>
                     ))
                   }
