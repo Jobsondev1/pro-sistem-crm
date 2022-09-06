@@ -35,3 +35,19 @@
         }
     }
 }
+
+.summary-box-special {
+    @include flex(center, space-between);
+    flex-direction: column;
+    height: 100%;
+
+    &__title {
+        font-weight: 700;
+        font-size: $fontSizeMedium;
+    }
+
+    &__value {
+        font-size: $fontSizeLarge;
+        font-weight: 700;
+    }
+}

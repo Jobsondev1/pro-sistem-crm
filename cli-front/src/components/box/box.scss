@@ -5,13 +5,13 @@
     border-radius: $borderRadius;
     background-color: $mainBg;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    
+
     &-purple {
         background-color: $purple;
         color: $white;
     }
 
-    &-fullheigh{
+    &-fullheight {
         height: calc(100% - $spacing);
 
         @include tablet {
