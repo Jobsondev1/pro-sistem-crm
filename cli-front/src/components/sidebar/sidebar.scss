@@ -31,7 +31,7 @@
         }
 
         img {
-            --size: 55px;
+            --size: 50px;
             width: var(--size);
             height: var(--size);
         }
@@ -58,8 +58,8 @@
         &__item {
             @include flex(center, flex-start);
             position: relative;
-            margin-bottom: 2rem;
-            padding-left: 20%;
+            margin-bottom: 1rem;
+            padding-left: 10%;
             transition: color 0.3s ease-in-out;
 
             @include tablet {
