@@ -1,8 +1,34 @@
 import React from 'react'
+import { Bar } from 'react-chartjs-2'
+import Box from '../components/box/Box'
 import DashboardWrapper ,{ DashboardWrapperMain, DashboardWrapperRight}from '../components/dashboard-wrapper/DashboardWrapper'
 import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
-import Box from '../components/box/Box'
-import { data } from '../constants'
+import OverallList from '../components/overall-list/OverallList'
+import { colors, data } from '../constants'
+
+
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
+import RevenueList from '../components/revenue-lis/RevenueList'
+
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+)
 
 const Dashboard = () => {
   return (
@@ -34,7 +60,14 @@ const Dashboard = () => {
             </DashboardWrapperMain>
 
         <DashboardWrapperRight>
-            DashboardWrapperRight
+            <div className="titlt mb">Overall</div>
+            <div className="mb">
+              <OverallList />
+            </div>
+            <div className="titlt mb">Revenue by channel</div>
+            <div className="mb">
+              <RevenueList />
+            </div>
         </DashboardWrapperRight>    
     </DashboardWrapper>
   )
@@ -43,9 +76,58 @@ const Dashboard = () => {
 export default Dashboard
 
 const RevenueByMonthsChart = () =>{
+
+  const chartOptions ={
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+        xAxes: {
+            grid: {
+                display: false,
+                drawBorder: false
+            }
+        },
+        yAxes: {
+            grid: {
+                display: false,
+                drawBorder: false
+            }
+        }
+    },
+    plugins: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: false
+        }
+    },
+    elements: {
+        bar: {
+            backgroundColor: colors.orange,
+            borderRadius: 20,
+            borderSkipped: 'bottom'
+        }
+    }
+}
+
+  const chartData ={
+    labels : data.revenueByMonths.labels,
+    datasets: [
+      {
+        label: 'Revenue',
+        data: data.revenueByMonths.data
+      }
+    ]
+  }
   return(
     <>
-      RevenueByMonthsChart
+      <div className="title">
+        Revenue by months
+      </div>
+      <div>
+       <Bar options={chartOptions} data={chartData} height={`300px`} />
+      </div>
     </>
   )
 }
